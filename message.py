@@ -14,6 +14,14 @@ class Message:
             self.route = self.__parse_route(data)
             self.delay = self.__parse_delay(data)
 
+    def __eq__(self, other):
+        if isinstance(other, Message):
+            return self.data == other.data
+        return False
+
+    def __hash__(self):
+        return hash(self.data)
+
     def get_status(self):
         return self.status
 

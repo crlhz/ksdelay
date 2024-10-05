@@ -20,9 +20,9 @@ while True:
 
     unsent_messages = set(messages) - set(old_messages)
     for mes in unsent_messages:
-        print(mes.get_route())
+        print(mes.get_data())
     print("***Koniec nowych wiadomości***")
-    old_messages = messages
+    old_messages = messages.copy()
     messages.clear()
     raw_messages.clear()
     time.sleep(600)
