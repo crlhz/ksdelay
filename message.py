@@ -1,11 +1,32 @@
 import re
 
+LINES = {'S1': ['Gliwice', 'Katowice', 'Częstochowa'],
+         'S13': ['Częstochowa', 'Lubliniec'],
+         'S17': ['Gliwice', 'Rybnik'],
+         'S18': ['Gliwice', 'Bytom'],
+         'S3': ['Katowice', 'Kraków Główny'],
+         'S31': ['Katowice', 'Mysłowice', 'Oświęcim'],
+         'S4': ['Katowice', 'Tychy Lodowisko'],
+         'S5': ['Katowice', 'Bielsko-Biała Główna', 'Zwardoń'],
+         'S6': ['Katowice', 'Wisła Głębce'],
+         'S61': ['Czechowice-Dziedzice', 'Zebrzydowice', 'Cieszyn'],
+         'S62': ['Skoczów', 'Goleszów', 'Cieszyn'],
+         'S7': ['Katowice', 'Rybnik', 'Racibórz'],
+         'S71': ['Katowice', 'Rybnik', 'Wodzisław Śląski', 'Chałupki', 'Bohumin'],
+         'S72': ['Rybnik', 'Pszczyna'],
+         'S75': ['Gliwice', 'Knurów', 'Rybnik', 'Chybie', 'Bielsko-Biała', 'Żywiec'],
+         'S76': ['Gliwice', 'Knurów', 'Rybnik', 'Chybie', 'Wisła Głębce'],
+         'S78': ['Racibórz', 'Chałupki'],
+         'S8': ['Katowice', 'Tarnowskie Góry', 'Lubliniec'],
+         'S9': ['Częstochowa', 'Zawiercie', 'Pyrzowice Lotnisko', 'Tarnowskie Góry']}
+
 
 class Message:
     """
     Representation of a single message
 
     """
+
     def __init__(self, data):
         """
         Message constructor
@@ -182,4 +203,4 @@ class Message:
             return temp.group(1)
         else:
             print("Delay not found")
-            return 0                    # in case of cancelled train
+            return 0  # in case of cancelled train
