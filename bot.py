@@ -1,28 +1,29 @@
-import os
-import time
 import telebot
-from dotenv import load_dotenv
-
-#
-# class Bot:
-#     def __init__(self):
-#
 
 
-load_dotenv()
+class Bot:
+    """
+    Representation of telegram bot
 
-bot = telebot.TeleBot(os.getenv('BOT_TOKEN'))
+    """
 
+    def __init__(self, token):
+        """
+        Bot class constructor
 
-# Funkcja wysyłająca wiadomości
-def send_test_message():
-    try:
-        bot.send_message(os.getenv('CHANNEL_ID'), "test")
-    except Exception as e:
-        print(f"Błąd przy wysyłaniu wiadomości: {e}")
+        @param token: Bot token
+        """
+        self.token = token
+        self.bot = telebot.TeleBot(token)
 
+    def send_message(self, channel, message):
+        """
+        Sent message to the specific channel
 
-# Pętla nieskończona do wysyłania wiadomości
-while True:
-    send_test_message()
-    time.sleep(20)
+        @param channel: Telegram channel ID
+        @param message: Message content
+        """
+        try:
+            self.bot.send_message(channel, message)
+        except Exception as e:
+            print(f"Błąd przy wysyłaniu wiadomości: {e}")
