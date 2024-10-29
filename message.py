@@ -120,7 +120,7 @@ class Message:
         @param data:    Message content
         @return:        Train number
         """
-        temp = re.search(r"Pociąg nr (\d+)", self.data)
+        temp = re.search(r"Pociąg(?: nr)? (\d+)", data)
 
         if temp:
             return temp.group(1)
