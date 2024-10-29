@@ -3,10 +3,24 @@ from bs4 import BeautifulSoup
 
 
 class Scrapper:
+    """
+    Representation of kolejeslaskie.com scrapper
+
+    """
     def __init__(self, url):
+        """
+        Scrapper constructor
+
+        @param url:     URL to information page
+        """
         self.url = url
 
     def get_data(self):
+        """
+        Data getter
+
+        @return:        List of raw messages from post titles
+        """
         data = self.__download_data()
         soup = BeautifulSoup(data, 'html.parser')
         articles = soup.find_all('article', class_='post')
@@ -21,6 +35,11 @@ class Scrapper:
         return titles
 
     def __download_data(self):
+        """
+        Download whole page
+
+        @return:        Whole information page
+        """
         response = requests.get(self.url)
 
         if response.status_code == 200:
