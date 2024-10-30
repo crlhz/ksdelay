@@ -126,7 +126,6 @@ class Message:
         if temp:
             return temp.group(1)
         else:
-            print("Number not found")
             self.status = self.status * 0
 
     def __parse_route(self, data):
@@ -148,10 +147,8 @@ class Message:
                 route['arrival_time'] = temp[1][1]
                 return route
             else:
-                print("Route not found")
                 self.status = self.status * 0
         else:
-            print("Route not found")
             self.status = self.status * 0
 
     def __parse_type(self, data):
@@ -183,5 +180,4 @@ class Message:
         if temp:
             return temp.group(1)
         else:
-            print("Delay not found")
             return 0  # in case of cancelled train

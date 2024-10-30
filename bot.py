@@ -1,5 +1,5 @@
 import telebot
-
+import logging
 
 class Bot:
     """
@@ -25,5 +25,6 @@ class Bot:
         """
         try:
             self.bot.send_message(channel, message)
+            logging.info("Sent message: " + message)
         except Exception as e:
-            print(f"Błąd przy wysyłaniu wiadomości: {e}")
+            logging.error(f"Błąd przy wysyłaniu wiadomości: {e}")

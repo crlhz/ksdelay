@@ -1,11 +1,18 @@
-import time
 from dotenv import load_dotenv
 import os
 import pickle
+import logging
 
 from scrapper import Scrapper
 from message import Message
 from bot import Bot
+
+logging.basicConfig(
+    filename='app.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    encoding='UTF-8'
+)
 
 old_messages = []
 messages = []
@@ -21,12 +28,15 @@ for mes in raw_messages:
     message = Message(mes)
     if message.get_status() == 1:
         messages.append(message)
+        logging.info("Recognized: " + message.get_data())
+    else:
+        logging.warning("Not recognized: " + message.get_data())
 
 try:
     with open('old-messages.pkl', 'rb') as f:
         old_messages = pickle.load(f)
 except (IOError, pickle.PickleError) as e:
-    print("Wystąpił błąd podczas zapisywania danych:", e)
+    logging.error(f"Wystąpił błąd podczas zapisywania danych: {e}")
 
 unsent_messages = set(messages) - set(old_messages)
 

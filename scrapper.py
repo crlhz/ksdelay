@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import logging
 
 
 class Scrapper:
@@ -43,6 +44,7 @@ class Scrapper:
         response = requests.get(self.url)
 
         if response.status_code == 200:
+            logging.info("Page downloaded")
             return response.text
         else:
-            print(f'Błąd: {response.status_code}')
+            logging.error("Connection failed: " + f'Błąd: {response.status_code}')
