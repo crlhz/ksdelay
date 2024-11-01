@@ -138,7 +138,7 @@ class Message:
         x = self.data.find("relacji")  # remove beginning
         if x != -1:
             temp = self.data[x + len("relacji"):]
-            temp = re.findall(r"(\w+[\s\w]*)\s(\d{2}:\d{2})", temp)
+            temp = re.findall(r"([\w\s.]+)\s(\d{2}:\d{2})", temp)
             route = {}
             if temp:
                 route['departure_city'] = temp[0][0]
