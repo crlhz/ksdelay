@@ -1,4 +1,5 @@
 import re
+from logging import exception
 
 
 class Message:
@@ -137,19 +138,21 @@ class Message:
         """
         x = self.data.find("relacji")  # remove beginning
         if x != -1:
-            temp = self.data[x + len("relacji"):]
-            temp = re.findall(r"([\w\s.]+)\s(\d{2}:\d{2})", temp)
-            route = {}
-            if temp:
-                route['departure_city'] = temp[0][0]
-                route['departure_time'] = temp[0][1]
-                route['arrival_city'] = temp[1][0]
-                route['arrival_time'] = temp[1][1]
-                return route
-            else:
+            try:
+                temp = self.data[x + len("relacji"):]
+                temp = re.findall(r"([\w\s.]+)\s(\d{2}:\d{2})", temp)
+                route = {}
+                if temp:
+                    route['departure_city'] = temp[0][0]
+                    route['departure_time'] = temp[0][1]
+                    route['arrival_city'] = temp[1][0]
+                    route['arrival_time'] = temp[1][1]
+                    return route
+                else:
+                    self.status = self.status * 0
+            except IndexError:
                 self.status = self.status * 0
-        else:
-            self.status = self.status * 0
+
 
     def __parse_type(self, data):
         """
