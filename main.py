@@ -1,3 +1,5 @@
+import json
+
 from dotenv import load_dotenv
 import os
 import pickle
@@ -24,6 +26,7 @@ raw_messages = scrapper.get_data()
 
 # initialize telegram bot
 load_dotenv()
+CHANNEL_IDS = json.loads(os.getenv("CHANNEL_IDS"))
 bot = Bot(os.getenv('BOT_TOKEN'))
 
 # convert raw data into messages
@@ -48,7 +51,7 @@ unsent_messages = set(messages) - set(old_messages)
 # send messages that haven't been sent yet
 for mes in unsent_messages:
     print(mes.get_data())
-    bot.send_message(os.getenv("CHANNEL_ID"), mes.get_data())
+    bot.send_message(CHANNEL_IDS[mes.get_line(mes.get_number())], mes.get_data())
 print("***Koniec nowych wiadomości***")
 
 # save new messages as old messages

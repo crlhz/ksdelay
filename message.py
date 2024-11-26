@@ -131,7 +131,7 @@ class Message:
                     if str(train_number) in line:
                         line = file.title().split(".")
                         return line[0]
-
+        return "NA"
 
     def __parse_number(self, data):
         """
