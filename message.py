@@ -1,6 +1,8 @@
+import os
 import re
 from logging import exception
 
+TRAIN_NUMBERS_PATH = "./train_numbers/"
 
 class Message:
     """
@@ -114,6 +116,22 @@ class Message:
 
         """
         self.sent = 1
+
+    def get_line(self, train_number):
+        """
+        Getter for line using train number.
+
+        @param train_number:    train number
+        @return:                Line
+        """
+        files = [name for name in os.listdir(TRAIN_NUMBERS_PATH) if os.path.isfile(os.path.join(TRAIN_NUMBERS_PATH, name))]
+        for file in files:
+            with open(TRAIN_NUMBERS_PATH + file, "r", encoding="utf-8") as txt:
+                for line in txt:
+                    if str(train_number) in line:
+                        line = file.title().split(".")
+                        return line[0]
+
 
     def __parse_number(self, data):
         """
