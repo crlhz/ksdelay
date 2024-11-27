@@ -2,7 +2,7 @@ import os
 import re
 from logging import exception
 
-TRAIN_NUMBERS_PATH = "./train_numbers/"
+TRAIN_NUMBERS_PATH = "/home/kamil/ksdelay/train_numbers/"
 
 class Message:
     """
