@@ -4,17 +4,22 @@ from dotenv import load_dotenv
 import os
 import pickle
 import logging
+from logging.handlers import TimedRotatingFileHandler
 
 from scrapper import Scrapper
 from message import Message
 from bot import Bot
 
+handler = TimedRotatingFileHandler("timed_app.log", when="midnight", interval=1, backupCount=7)
+
 logging.basicConfig(
     filename='app.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    encoding='UTF-8'
+    encoding='UTF-8',
 )
+logger = logging.getLogger("Logger")
+logger.addHandler(handler)
 
 old_messages = []
 messages = []
