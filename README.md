@@ -10,7 +10,7 @@ Korzystając z poniższych linków/kodów QR do kanałów na telegramie, dedykow
 |Linia|QR|
 |--|--|
 |S1|<img src="https://i.imgur.com/pH5UACH.png" alt="Alt text" width="150" />|
-|S17|<img src="https://i.imgur.com/MB3e6bJ.png" alt="Alt text" width="150" />|
+|S14|<img src="https://i.imgur.com/EKHsK9V.png" alt="Alt text" width="150" />|
 |S18|<img src="https://i.imgur.com/gZXUxzV.png" alt="Alt text" width="150" />|
 |S4|<img src="https://i.imgur.com/1Zh9j3s.png" alt="Alt text" width="150" />|
 |S5|<img src="https://i.imgur.com/fKM4nZs.png" alt="Alt text" width="150" />|
